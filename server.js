@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 
 import { Logger } from './logger';
 import { Router } from './router';
+import { routes } from './routes';
 
 const defaultConfig = {
   port: 3000,

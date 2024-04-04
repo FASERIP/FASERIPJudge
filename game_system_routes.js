@@ -57,10 +57,12 @@ function GameSystemRoutes(gameSystemData = {}) {
     }
   }
 
-  function handleRoll(_, res, params) {
+  function handleRoll(req, res, params) {
     try {
-      const query = res.url.search;
-      const { cs = 0 } = querystring.parse(query);
+      const query = req.url.search;
+      const {
+        cs = 0
+      } = querystring.parse(query);
       const result = roll(params.rank, cs);
       const responseResult = JSON.stringify(result);
       res.status(200).end(responseResult);
@@ -70,11 +72,13 @@ function GameSystemRoutes(gameSystemData = {}) {
     }
   }
 
-  function handleRollRaw(_, res, params) {
+  function handleRollRaw(req, res, params) {
     try {
-      const query = res.url.search;
-      const { cs = 0 } = querystring.parse(query);
-      const result = rollRaw(params.rank, params.roll, cs)
+      const query = req.url.search;
+      const {
+        cs = 0
+      } = querystring.parse(query);
+      const result = rollRaw(params.rank, params.roll, cs);
       const responseResult = JSON.stringify(result);
       res.status(200).end(responseResult);
     } catch (error) {
@@ -83,12 +87,78 @@ function GameSystemRoutes(gameSystemData = {}) {
     }
   }
 
+  function handleRollWithIntensity(req, res, params) {
+    try {
+      const query = req.url.search;
+      const {
+        cs = 0,
+        is = 0,
+      } = querystring.parse(query);
+      const result = rollWithIntensity(params.rank, params.roll, params.intensity, cs, is);
+      const responseResult = JSON.stringify(result);
+      res.status(200).end(responseResult);
+    } catch (error) {
+      const responseError = JSON.stringify(error);
+      res.status(422).end(responseError);
+    }
+  }
+
+  function handleRollVsIntensity(req, res, params) {
+    try {
+      const query = req.url.search;
+      const {
+        cs = 0,
+        is = 0,
+      } = querystring.parse(query);
+      const result = rollVsIntensity(params.rank, params.intensity, cs, is);
+      const responseResult = JSON.stringify(result);
+      res.status(200).end(responseResult);
+    } catch (error) {
+      const responseError = JSON.stringify(error);
+      res.status(422).end(responseError);
+    }
+  }
+
+  function handleRollWithEffect(req, res, params) {
+    try {
+      const query = req.url.search;
+      const {
+        cs = 0,
+      } = querystring.parse(query);
+      const result = rollWithEffect(params.rank, params.roll, params.effect, cs);
+      const responseResult = JSON.stringify(result);
+      res.status(200).end(responseResult);
+    } catch (error) {
+      const responseError = JSON.stringify(error);
+      res.status(422).end(responseError);
+    }
+  }
+
+  function handleRollForEffect(req, res, params) {
+    //rollForEffect(baseRank, effect = null, columnShift = 0
+    try {
+      const query = req.url.search;
+      const {
+        cs = 0,
+      } = querystring.parse(query);
+      const result = rollWithEffect(params.rank, params.intensity, cs);
+      const responseResult = JSON.stringify(result);
+      res.status(200).end(responseResult);
+    } catch (error) {
+      const responseError = JSON.stringify(error);
+      res.status(422).end(responseError);
+    }
+  }
 
   const routes = {
     '/ranks': handleGetRanks,
     '/ranks/:rank': handleGetRank,
     '/ranks/:rank/roll': handleRoll,
     '/ranks/:rank/roll/:roll': handleRollRaw,
+    'ranks/:rank/intensity/:intensity/roll': handleRollVsIntensity,
+    '/ranks/:rank/intensity/:intensity/roll/:roll': handleRollWithIntensity,
+    '/ranks/:rank/roll/:roll/effect/:effect': handleRollWithEffect,
+    '/ranks/:ranks/effect/:effect': handleRollForEffect,
     '/effects': handleGetEffects,
     '/effects/:effect': handleGetEffect,
     '/effects/:effect/:color': handleGetEffectResult,

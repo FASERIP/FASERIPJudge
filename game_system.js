@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import { rollD100 } from './dice';
 
 const COLORS = {
@@ -229,7 +227,7 @@ function GameSystem(gameSystemData = { 'Universal Table': { 'Rank': {}, 'Effect'
   }
 
   // Roll on the Universal Table and lookup on the Effects Table
-  function rollWithEffect(baseRank, d100Roll, columnShift = 0, effect = null) {
+  function rollWithEffect(baseRank, d100Roll, effect = null, columnShift = 0) {
     const outcome = rollRaw(baseRank, d100Roll, columnShift);
 
     if (effect) {
@@ -240,8 +238,8 @@ function GameSystem(gameSystemData = { 'Universal Table': { 'Rank': {}, 'Effect'
     return outcome;
   }
 
-  function rollForEffect(baseRank, columnShift = 0, effect = null) {
-    return rollWithEffect(baseRank, percentileDice.next(), columnShift, effect);
+  function rollForEffect(baseRank, effect = null, columnShift = 0) {
+    return rollWithEffect(baseRank, percentileDice.next(), effect, columnShift);
   }
 
   return {
