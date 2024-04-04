@@ -31,4 +31,4 @@ function Logger(logger) {
   };
 }
 
-export default { Logger };
+export { Logger };

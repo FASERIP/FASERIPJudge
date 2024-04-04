@@ -19,7 +19,7 @@ function rollD10() {
     return rollDie(DICE.D10);
 }
 
-export default {
+export {
     rollDie,
     rollD100,
     rollD10,

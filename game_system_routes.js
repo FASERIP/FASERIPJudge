@@ -1,6 +1,6 @@
 import querystring from 'node:querystring';
 
-import { GameSystem } from './game_system';
+import { GameSystem } from './game_system.js';
 
 function GameSystemRoutes(gameSystemData = {}) {
   const {
@@ -17,32 +17,38 @@ function GameSystemRoutes(gameSystemData = {}) {
 
   function handleGetRanks(_, res) {
     const responseRanks = JSON.stringify(gameSystemData.Ranks);
-    res.status(200).end(responseRanks);
+    res.statusCode = 200;
+    res.end(responseRanks);
   }
 
   function handleGetRank(_, res, params) {
     try {
       const rank = getRank(params.rank);
       const responseRank = JSON.stringify(rank);
-      res.status(200).end(responseRank);
+      res.statusCode = 200;
+      res.end(responseRank);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
   function handleGetEffects(_, res) {
     const responseEffects = JSON.stringify(gameSystemData.Effects);
-    res.status(200).end(responseEffects);
+    res.statusCode = 200;
+    res.end(responseEffects);
   }
 
   function handleGetEffect(_, res, params) {
     try {
       const effect = getEffect(params.effect);
       const responseEffect = JSON.stringify(effect);
-      res.status(200).end(responseEffect);
+      res.statusCode = 200;
+      res.end(responseEffect);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -50,10 +56,12 @@ function GameSystemRoutes(gameSystemData = {}) {
     try {
       const result = getEffectResult(params.effect, params.color);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -65,10 +73,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = roll(params.rank, cs);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -80,10 +90,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = rollRaw(params.rank, params.roll, cs);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -96,10 +108,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = rollWithIntensity(params.rank, params.roll, params.intensity, cs, is);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -112,10 +126,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = rollVsIntensity(params.rank, params.intensity, cs, is);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -127,10 +143,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = rollWithEffect(params.rank, params.roll, params.effect, cs);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -143,10 +161,12 @@ function GameSystemRoutes(gameSystemData = {}) {
       } = querystring.parse(query);
       const result = rollForEffect(params.rank, params.intensity, cs);
       const responseResult = JSON.stringify(result);
-      res.status(200).end(responseResult);
+      res.statusCode = 200;
+      res.end(responseResult);
     } catch (error) {
       const responseError = JSON.stringify(error);
-      res.status(422).end(responseError);
+      res.statusCode = 422;
+      res.end(responseError);
     }
   }
 
@@ -167,4 +187,4 @@ function GameSystemRoutes(gameSystemData = {}) {
   return routes;
 }
 
-export default { GameSystemRoutes };
+export { GameSystemRoutes };

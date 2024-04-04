@@ -33,7 +33,8 @@ function matchRoute(pathname, routePattern) {
 // Route handlers
 const defaultRoutes = {
     '/': (_, res) => {
-        res.status(204).end();
+        res.statusCode = 204;
+        res.end();
     }
 };
 
@@ -45,13 +46,16 @@ function defaultHandler(_, res) {
 
 // Handler for server errors
 function handleServerError(_, res, error) {
-    logError('An unexpected error occurred', error);
     res.writeHead(500, { 'Content-Type': 'text/plain' });
     res.end('Internal Server Error');
+    return {
+        message: 'An unexpected error occurred',
+        error,
+    };
 }
 
-function Router(config, routes = {}) {
-    const routes = {
+function Router(config, routes = {}, logger = { logInfo: console.info, logError: console.error }) {
+    const myRoutes = {
         ...defaultRoutes,
         ...routes,
     };
@@ -77,10 +81,10 @@ function Router(config, routes = {}) {
         let matchedRoute = null;
         let params = null;
 
-        for (const routePattern in routes) {
+        for (const routePattern in myRoutes) {
             params = matchRoute(parsedUrl.pathname, routePattern);
             if (params) {
-                matchedRoute = routes[routePattern];
+                matchedRoute = myRoutes[routePattern];
                 break;
             }
         }
@@ -88,8 +92,13 @@ function Router(config, routes = {}) {
         try {
             const routeHandler = matchedRoute || defaultHandler;
             routeHandler(req, res, params);
-        } catch (error) {
-            handleServerError(req, res, error);
+        } catch (err) {
+            const {
+                message,
+                error
+            } = handleServerError(req, res, err);
+            console.error('oop');
+            logger.logError(message, error);
         }
     }
 
@@ -98,4 +107,4 @@ function Router(config, routes = {}) {
     };
 }
 
-export default { Router };
+export { Router };

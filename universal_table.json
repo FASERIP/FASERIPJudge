@@ -138,8 +138,8 @@
           "Red": 66
         },
         "Beyond": {
-          "Minimum": ".inf",
-          "Standard": ".inf",
+          "Minimum": 1e100,
+          "Standard": 1e100,
           "Abbreviation": "B",
           "Green": 2,
           "Yellow": 21,

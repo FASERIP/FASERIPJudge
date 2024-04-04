@@ -1,4 +1,4 @@
-import { rollD100 } from './dice';
+import { rollD100 } from './dice.js';
 
 const COLORS = {
   AUTOMATIC: 'Automatic',
@@ -18,6 +18,7 @@ const percentileDice = percentileDiceRoller();
 const ranks = {};
 const effects = {};
 let rankArray = [];
+let effectsArray = [];
 
 function isValidRank(rank) {
   return rank &&
@@ -42,7 +43,7 @@ function isValidEffect(effect) {
 function parseGameSystemData(data) {
   for (const rankName in data['Universal Table'].Rank) {
     const rank = data['Universal Table'].Rank[rankName];
-    if (validateRank(rank)) {
+    if (isValidRank(rank)) {
       rank.name = rankName;
       ranks[rankName] = rank;
     } else {
@@ -53,7 +54,7 @@ function parseGameSystemData(data) {
   rankArray = Object.values(ranks).sort((a, b) => a.Minimum - b.Minimum);
   for (const effectName in data['Universal Table'].Effect) {
     const effect = data['Universal Table'].Effect[effectName];
-    if (validateEffect(effect)) {
+    if (isValidEffect(effect)) {
       effect.name = effectName;
       effects[effectName] = effect;
     } else {
@@ -61,18 +62,19 @@ function parseGameSystemData(data) {
     }
   }
 
-  return {
-    rankMap: ranks.reduce((acc, [name, rankData]) => {
-      acc[name] = rankData;
-      acc[rankData.Abbreviation] = rankData;
-      return acc;
-    }, {}),
-    effectMap: effects.reduce((acc, [name, effectData]) => {
-      acc[name] = effectData;
-      acc[effectData.Abbreviation] = effectData;
-      return acc;
-    }, {})
-  };
+  const rankMap = Object.entries(ranks).reduce((acc, [name, rankData]) => {
+    acc[name] = rankData;
+    acc[rankData.Abbreviation] = rankData;
+    return acc;
+  }, {});
+
+  const effectMap = Object.entries(effects).reduce((acc, [name, effectData]) => {
+    acc[name] = effectData;
+    acc[effectData.abbreviation] = effectData;
+    return acc;
+  }, {});
+
+  return { rankMap, effectMap };
 }
 
 function getColorResult(d100Result, rank, columnShift = 0) {
@@ -102,17 +104,13 @@ function parseColumnShift(value) {
 
 function getColumnShiftedRank(rank, columnShift) {
   if (isValidRank(rank)) {
-    const index = ranks.findIndex(([_, rankData]) => rankData === rank);
+    const index = rankArray.findIndex(rankData => rankData === rank);
     let shiftedIndex = index + columnShift;
 
     // Ensure shifted index is within bounds
-    shiftedIndex = Math.max(0, shiftedIndex); // Not below Shift 0
-    while (ranks[shiftedIndex] && ranks[shiftedIndex][1].Minimum > 999) {
-      shiftedIndex--;
-    }
-    shiftedIndex = Math.min(ranks.length - 1, shiftedIndex); // Not above Shift Z
+    shiftedIndex = Math.max(0, Math.min(rankArray.length - 1, shiftedIndex));
 
-    return ranks[shiftedIndex][1];
+    return rankArray[shiftedIndex];
   } else {
     throw new Error('Invalid rank provided.');
   }
@@ -257,7 +255,7 @@ function GameSystem(gameSystemData = { 'Universal Table': { 'Rank': {}, 'Effect'
   };
 }
 
-export default {
+export {
   GameSystem,
   COLORS,
 };

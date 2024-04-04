@@ -8,9 +8,10 @@ function respondJSON(response, data, statusCode = 200, statusText = STATUS_CODES
     const jsonHeaders = { 'Content-Type': 'application/json' };
     const jsonData = JSON.stringify(data);
     const headers = { ...otherHeaders, ...jsonHeaders };
-    response.setHeaders(headers).writeHead(statusCode, statusText).end(jsonData);
+    response.setHeaders(headers).writeHead(statusCode, statusText);
+    res.end(jsonData);
 }
 
 module.exports = {
     respondJSON,
-}
+};

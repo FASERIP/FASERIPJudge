@@ -1,9 +1,9 @@
 import { createServer } from 'http';
 import { readFileSync } from 'fs';
 
-import { Logger } from './logger';
-import { Router } from './router';
-import { routes } from './routes';
+import { Logger } from './logger.js';
+import { Router } from './router.js';
+import { routes } from './routes.js';
 
 const defaultConfig = {
   port: 3000,
@@ -61,7 +61,7 @@ function startServer(customConfig = {}) {
 
   const {
     handleRequest
-  } = Router(config, routes);
+  } = Router(config, routes, {logError, logInfo});
 
   const server = createServer(handleRequest);
   logInfo("Server starting.");
@@ -71,6 +71,6 @@ function startServer(customConfig = {}) {
 }
 
 // Export the startServer function for external use
-export default {
+export {
   startServer
 };
