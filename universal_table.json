@@ -1,0 +1,297 @@
+{
+    "Universal Table": {
+      "Rank": {
+        "Shift 0": {
+          "Minimum": 0,
+          "Standard": 0,
+          "Abbreviation": "Sh0",
+          "Green": 66,
+          "Yellow": 95,
+          "Red": 100
+        },
+        "Feeble": {
+          "Minimum": 1,
+          "Standard": 2,
+          "Abbreviation": "Fe",
+          "Green": 61,
+          "Yellow": 91,
+          "Red": 100
+        },
+        "Poor": {
+          "Minimum": 3,
+          "Standard": 4,
+          "Abbreviation": "Pr",
+          "Green": 56,
+          "Yellow": 86,
+          "Red": 100
+        },
+        "Typical": {
+          "Minimum": 5,
+          "Standard": 6,
+          "Abbreviation": "Ty",
+          "Green": 51,
+          "Yellow": 81,
+          "Red": 98
+        },
+        "Good": {
+          "Minimum": 8,
+          "Standard": 10,
+          "Abbreviation": "Gd",
+          "Green": 46,
+          "Yellow": 76,
+          "Red": 98
+        },
+        "Excellent": {
+          "Minimum": 16,
+          "Standard": 20,
+          "Abbreviation": "Ex",
+          "Green": 41,
+          "Yellow": 71,
+          "Red": 95
+        },
+        "Remarkable": {
+          "Minimum": 26,
+          "Standard": 30,
+          "Abbreviation": "Rm",
+          "Green": 36,
+          "Yellow": 66,
+          "Red": 95
+        },
+        "Incredible": {
+          "Minimum": 37,
+          "Standard": 40,
+          "Abbreviation": "In",
+          "Green": 31,
+          "Yellow": 61,
+          "Red": 91
+        },
+        "Amazing": {
+          "Minimum": 46,
+          "Standard": 50,
+          "Abbreviation": "Am",
+          "Green": 26,
+          "Yellow": 56,
+          "Red": 91
+        },
+        "Monstrous": {
+          "Minimum": 63,
+          "Standard": 75,
+          "Abbreviation": "Mn",
+          "Green": 21,
+          "Yellow": 51,
+          "Red": 86
+        },
+        "Unearthly": {
+          "Minimum": 88,
+          "Standard": 100,
+          "Abbreviation": "Un",
+          "Green": 16,
+          "Yellow": 46,
+          "Red": 86
+        },
+        "Shift X": {
+          "Minimum": 126,
+          "Standard": 150,
+          "Abbreviation": "Sh0",
+          "Green": 11,
+          "Yellow": 41,
+          "Red": 81
+        },
+        "Shift Y": {
+          "Minimum": 176,
+          "Standard": 200,
+          "Abbreviation": "Sh0",
+          "Green": 7,
+          "Yellow": 41,
+          "Red": 81
+        },
+        "Shift Z": {
+          "Minimum": 351,
+          "Standard": 500,
+          "Abbreviation": "Sh0",
+          "Green": 4,
+          "Yellow": 36,
+          "Red": 76
+        },
+        "Class 1000": {
+          "Minimum": 1000,
+          "Standard": 1000,
+          "Abbreviation": "Sh0",
+          "Green": 2,
+          "Yellow": 36,
+          "Red": 76
+        },
+        "Class 3000": {
+          "Minimum": 3000,
+          "Standard": 3000,
+          "Abbreviation": "CL3000",
+          "Green": 2,
+          "Yellow": 31,
+          "Red": 71
+        },
+        "Class 5000": {
+          "Minimum": 5000,
+          "Standard": 5000,
+          "Abbreviation": "CL5000",
+          "Green": 2,
+          "Yellow": 26,
+          "Red": 66
+        },
+        "Beyond": {
+          "Minimum": ".inf",
+          "Standard": ".inf",
+          "Abbreviation": "B",
+          "Green": 2,
+          "Yellow": 21,
+          "Red": 61
+        }
+      },
+      "Effects": {
+        "Blunt Attack": {
+          "Ability": "Fighting",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Slam",
+          "Red": "Stun",
+          "Abbreviation": "BA"
+        },
+        "Edged Attack": {
+          "Ability": "Fighting",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Stun",
+          "Red": "Kill",
+          "Abbreviation": "EA"
+        },
+        "Shooting": {
+          "Ability": "Agility",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Bullseye",
+          "Red": "Kill",
+          "Abbreviation": "Sh"
+        },
+        "Edged Throwing": {
+          "Ability": "Agility",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Stun",
+          "Red": "Kill",
+          "Abbreviation": "ET"
+        },
+        "Blunt Throwing": {
+          "Ability": "Agility",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Hit",
+          "Red": "Stun",
+          "Abbreviation": "BT"
+        },
+        "Energy": {
+          "Ability": "Agility",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Bullseye",
+          "Red": "Kill",
+          "Abbreviation": "En"
+        },
+        "Force": {
+          "Ability": "Agility",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Bullseye",
+          "Red": "Stun",
+          "Abbreviation": "Fo"
+        },
+        "Grappling": {
+          "Ability": "Strength",
+          "White": "Miss",
+          "Green": "Miss",
+          "Yellow": "Partial",
+          "Red": "Hold",
+          "Abbreviation": "Gp"
+        },
+        "Grabbing": {
+          "Ability": "Strength",
+          "White": "Miss",
+          "Green": "Take",
+          "Yellow": "Grab",
+          "Red": "Break",
+          "Abbreviation": "Gb"
+        },
+        "Escape": {
+          "Ability": "Strength",
+          "White": "Miss",
+          "Green": "Miss",
+          "Yellow": "Escape",
+          "Red": "Reverse",
+          "Abbreviation": "Es"
+        },
+        "Charging": {
+          "Ability": "Endurance",
+          "White": "Miss",
+          "Green": "Hit",
+          "Yellow": "Slam",
+          "Red": "Stun",
+          "Abbreviation": "Ch"
+        },
+        "Dodging": {
+          "Ability": "Agility",
+          "White": "None",
+          "Green": "-2CS",
+          "Yellow": "-4CS",
+          "Red": "-6CS",
+          "Abbreviation": "Do"
+        },
+        "Evading": {
+          "Ability": "Fighting",
+          "White": "Autohit",
+          "Green": "Evasion",
+          "Yellow": "+1CS",
+          "Red": "+2CS",
+          "Abbreviation": "Ev"
+        },
+        "Blocking": {
+          "Ability": "Strength",
+          "White": "-6CS",
+          "Green": "-4CS",
+          "Yellow": "-2CS",
+          "Red": "+1CS",
+          "Abbreviation": "Bl"
+        },
+        "Catching": {
+          "Ability": "Agility",
+          "White": "Autohit",
+          "Green": "Miss",
+          "Yellow": "Damage",
+          "Red": "Catch",
+          "Abbreviation": "Ca"
+        },
+        "Stun?": {
+          "Ability": "Endurance",
+          "White": "1-10",
+          "Green": "1",
+          "Yellow": "No",
+          "Red": "No",
+          "Abbreviation": "St"
+        },
+        "Slam?": {
+          "Ability": "Endurance",
+          "White": "Grand Slam",
+          "Green": "1 Area",
+          "Yellow": "Stagger",
+          "Red": "No",
+          "Abbreviation": "Sl"
+        },
+        "Kill?": {
+          "Ability": "Endurance",
+          "White": "Endurance Loss",
+          "Green": "Endurance Loss if Edged or Shooting",
+          "Yellow": "No",
+          "Red": "No",
+          "Abbreviation": "Ki"
+        }
+      }
+    }
+  }
+  

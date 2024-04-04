@@ -1,0 +1,26 @@
+{
+  "name": "FASERIPJudge",
+  "version": "1.0.0",
+  "description": "A ChatGPT Plugin for adjucating the FASERIP Advanced/2nd Edition RPG System.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FASERIP/faseripjudge.git"
+  },
+  "keywords": [
+    "chatgpt",
+    "marvel",
+    "rpg",
+    "plugin"
+  ],
+  "author": "FASERIP HKRP",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/FASERIP/mshjudge/issues"
+  },
+  "homepage": "https://github.com/FASERIP/mshjudge#readme"
+}
