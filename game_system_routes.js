@@ -141,7 +141,7 @@ function GameSystemRoutes(gameSystemData = {}) {
       const {
         cs = 0,
       } = querystring.parse(query);
-      const result = rollWithEffect(params.rank, params.intensity, cs);
+      const result = rollForEffect(params.rank, params.intensity, cs);
       const responseResult = JSON.stringify(result);
       res.status(200).end(responseResult);
     } catch (error) {
